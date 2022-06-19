@@ -1,0 +1,10 @@
+const express=require('express')
+const router=express.Router()
+const {index,API}=require('../controllers/blog')
+router.get('/',index)
+router.get('/post',API.fetchAllPost)
+router.get('/post/:id',API.fetchPostById)
+router.post('/post/create',API.createPost)
+router.patch('/post/:id',API.updatePost)
+router.delete('/post/delete/:id',API.deletePost)
+module.exports=router
