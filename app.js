@@ -1,3 +1,4 @@
+const bodyParser = require('body-parser')
 const express=require('express')
 const app=express()
 const mongoose=require('mongoose')
@@ -9,7 +10,7 @@ mongoose.connect(process.env.MONGO_URI,{
 .catch(err=>console.log(err))
 const port=process.env.port||3000
 const blogRoute=require('./routes/blog.route')
-
+app.use(bodyParser)
 app.use('/blog',blogRoute)
 app.get('/',(req,res)=>{
     res.send('test')
